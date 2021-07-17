@@ -1,4 +1,5 @@
 ﻿using BaseAPI.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace BaseAPI.Controllers
 {
+    [EnableCors("any")]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class ProductsController : ControllerBase

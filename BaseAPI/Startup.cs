@@ -30,6 +30,7 @@ namespace BaseAPI
             var conStr = Configuration.GetSection("conStr");
             SqlHelper.conStr = conStr.Value;
 
+            services.AddCors(o=>o.AddPolicy("any", p=>p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod())); //register a service
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -52,6 +53,8 @@ namespace BaseAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(); //use service
 
             app.UseEndpoints(endpoints =>
             {
